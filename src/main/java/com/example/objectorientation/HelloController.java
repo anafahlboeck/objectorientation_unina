@@ -26,7 +26,8 @@ public class HelloController {
 
         try (Connection connection = DriverManager.getConnection(jdbcURL, user, password)) {
             HelloController.class.getClassLoader().getResourceAsStream("schema.sql");
-            Path of = Path.of("C:\\Users\\AnaFahlböck\\Documents\\Uni\\NEAPEL\\oop\\object_orientation\\objectorientation\\src\\main\\resources\\schema.sql");
+            String filePath = PathHandler.relativePath("src main resources schema.sql");
+            Path of = Path.of(filePath);
             query = Files.readString(of);
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
