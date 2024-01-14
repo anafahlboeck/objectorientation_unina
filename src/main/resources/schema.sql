@@ -1,53 +1,83 @@
-CREATE TABLE if not exists companies
+CREATE TABLE IF NOT EXISTS users
 (
-    company_id
+    user_id
     SERIAL
     PRIMARY
     KEY,
-    company_name
+    email
     VARCHAR
+(
+    255
+) UNIQUE NOT NULL,
+    password VARCHAR
 (
     255
 ) NOT NULL
     );
 
-CREATE TABLE if not exists contacts
+CREATE TABLE IF NOT EXISTS notes
 (
-    contact_id
+    note_id
     SERIAL
     PRIMARY
     KEY,
-    company_id
+    user_id
     INT,
-    contact_name
+    date
+    DATE
+    NOT
+    NULL,
+    header
     VARCHAR
 (
     255
 ) NOT NULL,
-    phone VARCHAR
-(
-    25
-),
-    email VARCHAR
-(
-    100
-),
-    CONSTRAINT fk_company
+    text TEXT NOT NULL,
+    CONSTRAINT fk_user
     FOREIGN KEY
 (
-    company_id
+    user_id
 )
-    REFERENCES companies
+    REFERENCES users
 (
-    company_id
+    user_id
 )
     );
 
-INSERT INTO companies(company_name)
-VALUES ('BlueBird Inc'),
-       ('Dolphin LLC');
 
-INSERT INTO contacts(company_id, contact_name, phone, email)
-VALUES (1, 'John Doe', '(408)-111-1234', 'john.doe@bluebird.dev'),
-       (1, 'Jane Doe', '(408)-111-1235', 'jane.doe@bluebird.dev'),
-       (2, 'David Wright', '(408)-222-1234', 'david.wright@dolphin.dev');
+INSERT INTO users(email, password)
+SELECT 'user1@gmail.com',
+       'password1' WHERE NOT EXISTS (
+    SELECT 1 FROM users WHERE email = 'user1@gmail.com'
+);
+
+
+INSERT INTO users(email, password)
+SELECT 'user2@hotmail.com',
+       'password2' WHERE NOT EXISTS (
+    SELECT 1 FROM users WHERE email = 'user2@hotmail.com'
+);
+
+INSERT INTO notes(user_id, date, header, text)
+SELECT 1,
+       '2024-01-12',
+       'Meeting',
+       'Discuss project progress' WHERE NOT EXISTS (
+    SELECT 1 FROM notes WHERE user_id = 1
+);
+
+INSERT INTO notes(user_id, date, header, text)
+SELECT 1,
+       '2024-01-13',
+       'Task',
+       'Complete coding assignment' WHERE NOT EXISTS (
+    SELECT 1 FROM notes WHERE user_id = 1
+);
+
+INSERT INTO notes(user_id, date, header, text)
+SELECT 2,
+       '2024-01-12',
+       'Reminder',
+       'Buy groceries' WHERE NOT EXISTS (
+    SELECT 1 FROM notes WHERE user_id = 2
+);
