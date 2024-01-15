@@ -1,5 +1,6 @@
-package com.example.objectorientation;
+package com.example.objectorientation.controller;
 
+import com.example.objectorientation.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

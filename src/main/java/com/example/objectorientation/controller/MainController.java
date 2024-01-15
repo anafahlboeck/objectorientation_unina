@@ -1,8 +1,9 @@
-package com.example.objectorientation;
+package com.example.objectorientation.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.example.objectorientation.HelloApplication;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
