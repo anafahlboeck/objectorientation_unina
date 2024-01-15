@@ -30,11 +30,11 @@
                         <Font name="PT Serif Bold" size="15.0" />
                     </font>
                 </Label>
-                <TextField fx:id="username" layoutX="30.0" layoutY="187.0" prefHeight="26.0" prefWidth="240.0" promptText="email" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                <TextField fx:id="usernameField" layoutX="30.0" layoutY="187.0" prefHeight="26.0" prefWidth="240.0" promptText="email" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
                     <font>
                         <Font name="PT Serif Caption" size="13.0" />
                     </font></TextField>
-                <PasswordField fx:id="password" layoutX="30.0" layoutY="242.0" promptText="password" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                <PasswordField fx:id="passwordField" layoutX="30.0" layoutY="242.0" promptText="password" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
                     <font>
                         <Font name="PT Serif" size="13.0" />
                     </font></PasswordField>
