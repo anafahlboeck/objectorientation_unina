@@ -2,6 +2,7 @@ package com.example.objectorientation.service;
 
 import com.example.objectorientation.ApplicationState;
 import com.example.objectorientation.model.User;
+import com.example.objectorientation.security.PasswordHasher;
 
 import java.lang.invoke.MethodHandles;
 import java.sql.Connection;
@@ -19,34 +20,41 @@ public class AuthenticationService {
 
     private final static Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getPackageName());
     public static final String COLUMN_EMAIL = "email";
-    public static final String COLUMN_PASSWORD = "password";
+    public static final String COLUMN_PASSWORD_HASH = "password";
     public static final String COLUMN_USER_ID = "user_id";
 
     private final ApplicationState state = ApplicationState.getInstance();
 
     private Optional<User> getUserByEmailAndPassword(String email, String password) {
-        String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+        String sql = "SELECT * FROM users WHERE email = ?";
 
         try (Connection connection = DriverManager.getConnection(state.getJdbcUrl(), state.getDBUser(), state.getDBPassword());
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, email);
-            statement.setString(2, password);
             ResultSet rs = statement.executeQuery();
 
             List<User> users = new ArrayList<>();
             while (rs.next()) {
                 String dbEmail = rs.getString(COLUMN_EMAIL);
-                String dbPassword = rs.getString(COLUMN_PASSWORD);
+                String dbPasswordHash = rs.getString(COLUMN_PASSWORD_HASH);
                 long dbUserId = rs.getLong(COLUMN_USER_ID);
-                User currentUser = new User(dbUserId, dbEmail, dbPassword);
+                User currentUser = new User(dbUserId, dbEmail, dbPasswordHash);
                 users.add(currentUser);
             }
 
             int columnCount = users.size(); //search user 0 not found, 1 found, 1 < else
             if (columnCount == 0 || columnCount > 1) return Optional.empty();
+
             User validUserFromDatabase = users.get(0);
-            return Optional.of(validUserFromDatabase);
+            String hashPassword = PasswordHasher.hashPassword(password);
+            String dbPassword = validUserFromDatabase.password();
+
+            if (hashPassword != null && hashPassword.equals(dbPassword)) {
+                return Optional.of(validUserFromDatabase);
+            } else {
+                return Optional.empty(); // Passwörter stimmen nicht überein
+            }
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
@@ -70,7 +78,4 @@ public class AuthenticationService {
     public boolean isAuthenticated(User user) {
         return state.authUser(user);
     }
-
 }
-
-
