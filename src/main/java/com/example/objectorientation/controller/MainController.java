@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.example.objectorientation.HelloApplication;
+import javafx.beans.NamedArg;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -20,9 +21,13 @@ public class MainController implements Initializable {
     public MainController() {
 
     }
-
+    HelloApplication a = new HelloApplication();
     @FXML
     private Button logoutButton;
+    @FXML
+    private Button openButton;
+    @FXML
+    private Button newNoteButton;
     @FXML
     private ListView<String> listView;
 
@@ -30,9 +35,25 @@ public class MainController implements Initializable {
         logout();
     }
 
+    public void openNote(ActionEvent event) throws IOException {
+        openSelectedNote();
+    }
+
+    public void addNewNote(ActionEvent event) throws IOException {
+        addNote();
+    }
+
     private void logout() throws IOException {
-        HelloApplication a = new HelloApplication();
         a.changeScene("loginPage.fxml");
+    }
+
+    private void openSelectedNote() throws IOException {
+        //retrieves selected message and opens readNotePage
+        a.changeScene("readNotePage.fxml");
+    }
+
+    private void addNote() throws IOException {
+        a.changeScene("newNotePage.fxml");
     }
 
     @Override
