@@ -27,7 +27,6 @@ public class AuthenticationService {
 
     private Optional<User> getUserByEmailAndPassword(String email, String password) {
         String sql = "SELECT * FROM users WHERE email = ?";
-
         try (Connection connection = DriverManager.getConnection(state.getJdbcUrl(), state.getDBUser(), state.getDBPassword());
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
@@ -60,14 +59,18 @@ public class AuthenticationService {
         }
     }
 
-    public void loginUser(String email, String password) {
-        User loginUser = getUserByEmailAndPassword(email, password)
-                .orElseThrow(() -> {
-                    //TODO current error handling let the application crash -> what should we do if authentication fails?
-                    return new IllegalArgumentException("Could not authenticate %s".formatted(email));
-                });
-        state.setSessionUser(loginUser);
-        logger.log(Level.INFO, "Logging in User: %s".formatted(email));
+    public boolean loginUser(String email, String password) {
+
+        Optional<User> loginUser = getUserByEmailAndPassword(email, password);
+        if(loginUser.isEmpty()) {
+            return false;
+        }
+        else {
+            state.setSessionUser(loginUser.get());
+            logger.log(Level.INFO, "Logging in User: %s".formatted(email));
+            return true;
+        }
+
     }
 
     public void logoutUser() {

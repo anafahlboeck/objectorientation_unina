@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.example.objectorientation.HelloApplication;
+import com.example.objectorientation.service.AuthenticationService;
 import javafx.beans.NamedArg;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -31,6 +32,9 @@ public class MainController implements Initializable {
     @FXML
     private ListView<String> listView;
 
+    private AuthenticationService authService = new AuthenticationService();
+
+
     public void userLogOut(ActionEvent event) throws IOException {
         logout();
     }
@@ -44,6 +48,7 @@ public class MainController implements Initializable {
     }
 
     private void logout() throws IOException {
+        authService.logoutUser();
         a.changeScene("loginPage.fxml");
     }
 

@@ -2,6 +2,7 @@ package com.example.objectorientation.controller;
 
 import com.example.objectorientation.HelloApplication;
 import com.example.objectorientation.PathHandler;
+import com.example.objectorientation.service.AuthenticationService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,6 +43,7 @@ public class LogInController implements Initializable{
     @FXML
     private PasswordField passwordField;
 
+    private AuthenticationService authService = new AuthenticationService();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
@@ -67,13 +69,15 @@ public class LogInController implements Initializable{
 
     private void checkLogin() throws IOException {
         HelloApplication a = new HelloApplication();
-        if(usernameField.getText().equals("admin") && passwordField.getText().equals("password")) {
-            errorLabel.setText("Success");
-
-            a.changeScene("mainPage.fxml");
-        }
-        else if(usernameField.getText().isEmpty() && passwordField.getText().isEmpty()) {
+        String email = usernameField.getText();
+        String pw = passwordField.getText();
+        if(email.isEmpty() && pw.isEmpty()) {
             errorLabel.setText("Please enter your data");
+            return;
+        }
+        if(this.authService.loginUser(email, pw)){
+            errorLabel.setText("Success");
+            a.changeScene("mainPage.fxml");
         }
         else {
             errorLabel.setText("Wrong credentials");
