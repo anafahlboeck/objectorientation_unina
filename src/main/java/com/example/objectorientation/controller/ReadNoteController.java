@@ -1,11 +1,12 @@
 package com.example.objectorientation.controller;
 
 import com.example.objectorientation.HelloApplication;
+import com.example.objectorientation.dao.NotesDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import  javafx.scene.control.Label;
-import  javafx.scene.control.Button;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,9 +29,10 @@ public class ReadNoteController implements Initializable {
     private Button deleteButton;
     @FXML
     private Button closeButton;
+    private NotesDAO notes = new NotesDAO();
 
     public void deleteNote(ActionEvent event) throws IOException {
-
+        notes.deleteNoteById(1); // just for testing
     }
 
     public void closeNote(ActionEvent event) throws  IOException {
@@ -40,6 +42,5 @@ public class ReadNoteController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-
     }
 }
