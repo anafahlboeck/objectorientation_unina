@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class NotesDAO {
 
@@ -26,13 +25,17 @@ public class NotesDAO {
              SELECT * FROM notes WHERE user_id = ?
             """;
 
-    public Collection<Note> getByUserId(User user) {
+    private static final String DELETE_NOTE_BY_ID = """
+             DELETE FROM notes WHERE note_id = ?
+            """;
+
+    public ArrayList<Note> getByUserId(User user) {
 
         try (Connection connection = DriverManager.getConnection(state.getJdbcUrl(), state.getDBUser(), state.getDBPassword())) {
             PreparedStatement prepStatement = connection.prepareStatement(GET_NOTE_BY_USER_ID);
             prepStatement.setLong(1, user.userId());
             ResultSet resultSet = prepStatement.executeQuery();
-            Collection<Note> result = new ArrayList<>();
+            ArrayList<Note> result = new ArrayList<>();
             while (resultSet.next()) {
                 int userId = Integer.parseInt(resultSet.getString(COLUMN_USER_ID));
                 int noteId = Integer.parseInt(resultSet.getString(COLUMN_NOTE_ID));
@@ -43,6 +46,21 @@ public class NotesDAO {
                 result.add(note);
             }
             return result;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteNoteById(int noteId) {
+        try (Connection connection = DriverManager.getConnection(state.getJdbcUrl(), state.getDBUser(), state.getDBPassword())) {
+            PreparedStatement prepStatement = connection.prepareStatement(DELETE_NOTE_BY_ID);
+            prepStatement.setInt(1, noteId);
+            int affectedRows = prepStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new RuntimeException("Note with ID " + noteId + " not found");
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -81,4 +81,7 @@ public class AuthenticationService {
     public boolean isAuthenticated(User user) {
         return state.authUser(user);
     }
+
+    public User getCurrentUser() { return state.getSessionUser();
+    }
 }
