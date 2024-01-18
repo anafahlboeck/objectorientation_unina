@@ -1,14 +1,17 @@
 package com.example.objectorientation;
 import com.example.objectorientation.model.User;
 import java.util.Objects;
+import com.example.objectorientation.model.Note;
 
 public class ApplicationState {
 
     private static ApplicationState applicationState;
     private User sessionUser;
+    private Note activeNote;
     private final String JDBC_URL = "jdbc:postgresql://localhost:5432/postgres";
     private final String POSTGRES_USER = "admin";
     private final String POSTGRES_PASSWORD = "password";
+
     private ApplicationState() {
     }
 
@@ -47,5 +50,14 @@ public class ApplicationState {
 
     public String getDBPassword() {
         return POSTGRES_PASSWORD;
+    }
+
+    public void setActiveNote(Note note)
+    {
+        this.activeNote = note;
+    }
+    public Note getActiveNote()
+    {
+        return this.activeNote;
     }
 }

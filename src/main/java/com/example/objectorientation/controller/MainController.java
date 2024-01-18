@@ -1,5 +1,6 @@
 package com.example.objectorientation.controller;
 
+import com.example.objectorientation.ApplicationState;
 import com.example.objectorientation.HelloApplication;
 import com.example.objectorientation.dao.NotesDAO;
 import com.example.objectorientation.model.Note;
@@ -36,6 +37,8 @@ public class MainController implements Initializable {
 
     private User currentUser = authService.getCurrentUser();
 
+    final private ApplicationState applicationState = ApplicationState.getInstance();
+
 
     public void userLogOut(ActionEvent event) throws IOException {
         logout();
@@ -55,7 +58,11 @@ public class MainController implements Initializable {
     }
 
     private void openSelectedNote() throws IOException {
-        //retrieves selected message and opens readNotePage
+        if(listView.getSelectionModel().getSelectedItem() == null)
+        {
+            return;
+        }
+        applicationState.setActiveNote(listView.getSelectionModel().getSelectedItem());
         a.changeScene("readNotePage.fxml");
     }
 
