@@ -20,6 +20,7 @@ public class ReadNoteController implements Initializable {
 
     }
 
+    HelloApplication a = new HelloApplication();
     @FXML
     private Label headerLabel;
     @FXML
@@ -36,12 +37,10 @@ public class ReadNoteController implements Initializable {
 
     public void deleteNote(ActionEvent event) throws IOException {
         notes.deleteNoteById(this.selectedNote.noteId());
-        HelloApplication a = new HelloApplication();
         a.changeScene("mainPage.fxml");
     }
 
     public void closeNote(ActionEvent event) throws  IOException {
-        HelloApplication a = new HelloApplication();
         a.changeScene("mainPage.fxml");
     }
     @Override
