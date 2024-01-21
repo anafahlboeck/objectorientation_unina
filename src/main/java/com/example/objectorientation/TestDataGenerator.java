@@ -12,6 +12,7 @@ public class TestDataGenerator {
 
     public static void insertTestDataIfNotExists() {
         User[] testUsers = {
+                new User(null, "admin", "admin"),
                 new User(null, "user1@gmail.com", "password1"),
                 new User(null, "user2@hotmail.com", "password2")
         };
