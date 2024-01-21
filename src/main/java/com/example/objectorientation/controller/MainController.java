@@ -70,9 +70,9 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        ArrayList<Note> notesList = new NotesDAO().getByUserId(currentUser);
-
         listView.getItems().clear();
+        ArrayList<Note> notesList = new NotesDAO().getByUserId(currentUser, true);
+
         listView.getItems().addAll(notesList);
 
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

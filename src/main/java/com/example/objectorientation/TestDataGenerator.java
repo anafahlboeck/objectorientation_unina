@@ -53,7 +53,7 @@ public class TestDataGenerator {
         if (!userHasNotes(connection, userId)) {
             String noteInsertQuery = "INSERT INTO notes(user_id, date, header, text) VALUES (?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(noteInsertQuery)) {
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 7; i++) {
                     preparedStatement.setInt(1, userId);
                     preparedStatement.setDate(2, java.sql.Date.valueOf(LocalDate.now().plusDays(i)));
                     preparedStatement.setString(3, "Note " + (i + 1) + " Header");

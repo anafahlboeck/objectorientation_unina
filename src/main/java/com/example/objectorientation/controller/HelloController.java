@@ -1,9 +1,7 @@
 package com.example.objectorientation.controller;
 
 import com.example.objectorientation.PathHandler;
-import com.example.objectorientation.model.Note;
 import com.example.objectorientation.service.AuthenticationService;
-import com.example.objectorientation.service.NoteManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -15,7 +13,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 public class HelloController {
     @FXML
@@ -47,26 +44,6 @@ public class HelloController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @FXML
-    protected void onListButtonClick() {
-        NoteManager noteManager = new NoteManager();
-
-        List<Note> user1Notes = noteManager.getAllNotes(1);
-
-        StringBuilder notesText = new StringBuilder();
-
-        for (Note note : user1Notes) {
-            notesText.append("Note ID: ").append(note.noteId())
-                    .append(", User ID: ").append(note.userId())
-                    .append(", Date: ").append(note.date())
-                    .append(", Header: ").append(note.header())
-                    .append(", Text: ").append(note.text())
-                    .append("\n");
-        }
-
-        notesTextArea.setText(notesText.toString());
     }
 
     @FXML

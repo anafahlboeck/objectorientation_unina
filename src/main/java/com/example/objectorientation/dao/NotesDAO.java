@@ -22,17 +22,20 @@ public class NotesDAO {
     private final ApplicationState state = ApplicationState.getInstance();
 
     private static final String GET_NOTE_BY_USER_ID = """
-             SELECT * FROM notes WHERE user_id = ?
+             SELECT * FROM notes WHERE user_id = ? ORDER BY date %s
             """;
 
     private static final String DELETE_NOTE_BY_ID = """
              DELETE FROM notes WHERE note_id = ?
             """;
 
-    public ArrayList<Note> getByUserId(User user) {
+    public ArrayList<Note> getByUserId(User user, boolean ascending) {
+        String sortOrder = ascending ? "ASC" : "DESC";
+        String query = String.format(GET_NOTE_BY_USER_ID, sortOrder);
+        System.out.println(query);
 
         try (Connection connection = DriverManager.getConnection(state.getJdbcUrl(), state.getDBUser(), state.getDBPassword())) {
-            PreparedStatement prepStatement = connection.prepareStatement(GET_NOTE_BY_USER_ID);
+            PreparedStatement prepStatement = connection.prepareStatement(query);
             prepStatement.setLong(1, user.userId());
             ResultSet resultSet = prepStatement.executeQuery();
             ArrayList<Note> result = new ArrayList<>();
