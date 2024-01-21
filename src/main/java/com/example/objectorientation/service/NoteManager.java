@@ -4,6 +4,7 @@ import com.example.objectorientation.ApplicationState;
 import com.example.objectorientation.model.Note;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,4 +49,31 @@ public class NoteManager {
 
         return notes;
     }
+
+    public void addNote(long userId, String header, String text) {
+
+        LocalDate currentDate = LocalDate.now();
+
+        String sql = "INSERT INTO notes (user_id, date, header, text) VALUES (?, ?, ?, ?)";
+
+        try (Connection connection = DriverManager.getConnection(state.getJdbcUrl(), state.getDBUser(), state.getDBPassword());
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setLong(1, userId);
+            statement.setDate(2, Date.valueOf(currentDate));
+            statement.setString(3, header);
+            statement.setString(4, text);
+
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Note added successfully.");
+            } else {
+                System.out.println("Failed to add note.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

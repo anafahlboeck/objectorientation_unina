@@ -26,7 +26,7 @@
          <children>
             <TextField fx:id="headerTextField" layoutX="37.0" layoutY="45.0" promptText="Header" />
             <TextField fx:id="dateTextField" layoutX="220.0" layoutY="46.0" promptText="Date" AnchorPane.topAnchor="46.0" />
-            <TextArea fx:id="noteTextField" layoutX="37.0" layoutY="92.0" prefHeight="200.0" prefWidth="514.0" promptText="Enter your note" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" />
+            <TextArea fx:id="noteTextArea" layoutX="37.0" layoutY="92.0" prefHeight="200.0" prefWidth="514.0" promptText="Enter your note" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" />
             <Button fx:id="cancelButton" layoutX="476.0" layoutY="2.0" mnemonicParsing="false" onAction="#cancelNote" style="-fx-background-color: red;" text="Cancel" textFill="#f8f8f8" AnchorPane.rightAnchor="37.0">
                <font>
                   <Font name="PT Serif Caption" size="13.0" />
