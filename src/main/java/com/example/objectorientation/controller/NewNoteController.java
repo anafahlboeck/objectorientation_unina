@@ -6,13 +6,19 @@ import com.example.objectorientation.service.AuthenticationService;
 import com.example.objectorientation.service.NoteManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class NewNoteController {
+public class NewNoteController implements Initializable {
 
 
     public NewNoteController() {
@@ -27,7 +33,7 @@ public class NewNoteController {
     @FXML
     private TextField headerTextField;
     @FXML
-    private TextField dateTextField;
+    private Label dateLabel;
     @FXML
     private TextArea noteTextArea;
 
@@ -55,5 +61,13 @@ public class NewNoteController {
 
     private void saveNoteAndExit() throws IOException {
         a.changeScene("mainPage.fxml");
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+
+        String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        dateLabel.setText(date);
+
     }
 }
