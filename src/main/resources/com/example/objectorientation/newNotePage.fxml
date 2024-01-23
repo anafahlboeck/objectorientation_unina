@@ -8,34 +8,40 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.NewNoteController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1512.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.NewNoteController">
    <top>
-      <AnchorPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="37.0" layoutY="25.0" text="Add new Note" AnchorPane.leftAnchor="37.0">
-               <font>
-                  <Font name="PT Serif Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+      <AnchorPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="headerTextField" layoutX="37.0" layoutY="45.0" promptText="Header" />
-            <TextArea fx:id="noteTextArea" layoutX="37.0" layoutY="92.0" prefHeight="200.0" prefWidth="514.0" promptText="Enter your note" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" />
-            <Button fx:id="cancelButton" layoutX="476.0" layoutY="2.0" mnemonicParsing="false" onAction="#cancelNote" style="-fx-background-color: red;" text="Cancel" textFill="#f8f8f8" AnchorPane.rightAnchor="37.0">
+            <TextField fx:id="headerTextField" layoutX="295.0" layoutY="129.0" prefHeight="55.0" prefWidth="303.0" promptText="Header" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="600.0">
                <font>
-                  <Font name="PT Serif Caption" size="13.0" />
+                  <Font name="PT Serif" size="30.0" />
+               </font></TextField>
+            <TextArea fx:id="noteTextArea" layoutX="37.0" layoutY="92.0" prefHeight="200.0" prefWidth="514.0" promptText="Enter your note" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font name="PT Serif" size="18.0" />
+               </font></TextArea>
+            <Button fx:id="cancelButton" layoutX="1147.0" layoutY="557.0" mnemonicParsing="false" onAction="#cancelNote" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: red;" text="Cancel" textFill="#f8f8f8" AnchorPane.rightAnchor="300.0">
+               <font>
+                  <Font name="PT Serif Caption" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="saveExitButton" layoutX="454.0" layoutY="47.0" mnemonicParsing="false" onAction="#saveNoteExit" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: green;" text="Save &amp; Exit" textFill="WHITE" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="46.0">
+            <Button fx:id="saveExitButton" layoutX="311.0" layoutY="557.0" mnemonicParsing="false" onAction="#saveNoteExit" prefHeight="50.0" prefWidth="154.0" style="-fx-background-color: green;" text="Save &amp; Exit" textFill="WHITE" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="1067.0" AnchorPane.topAnchor="557.0">
                <font>
-                  <Font name="PT Serif" size="13.0" />
+                  <Font name="PT Serif" size="20.0" />
                </font>
             </Button>
-            <Label fx:id="dateLabel" layoutX="220.0" layoutY="46.0" prefHeight="26.0" prefWidth="161.0" />
+            <Label fx:id="dateLabel" layoutX="953.0" layoutY="152.0" prefHeight="36.0" prefWidth="180.0">
+               <font>
+                  <Font size="30.0" />
+               </font></Label>
+            <Label layoutX="308.0" layoutY="29.0" text="Add new Note" AnchorPane.leftAnchor="300.0">
+               <font>
+                  <Font name="PT Serif Bold" size="50.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

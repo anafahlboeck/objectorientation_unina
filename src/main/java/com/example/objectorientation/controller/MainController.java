@@ -31,8 +31,6 @@ public class MainController implements Initializable {
     @FXML
     private Button logoutButton;
     @FXML
-    private Button openButton;
-    @FXML
     private Button newNoteButton;
     @FXML
     private ListView<Note> listView;
@@ -46,9 +44,6 @@ public class MainController implements Initializable {
         logout();
     }
 
-    public void openNote(ActionEvent event) throws IOException {
-        openSelectedNote();
-    }
 
     public void addNewNote(ActionEvent event) throws IOException {
         addNote();
@@ -59,10 +54,6 @@ public class MainController implements Initializable {
         a.changeScene("loginPage.fxml");
     }
 
-    private void openSelectedNote() throws IOException {
-        //retrieves selected message and opens readNotePage
-        a.changeScene("readNotePage.fxml");
-    }
 
     private void addNote() throws IOException {
         a.changeScene("newNotePage.fxml");
