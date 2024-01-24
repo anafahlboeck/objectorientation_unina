@@ -32,6 +32,11 @@
                   <Font name="PT Serif" size="20.0" />
                </font>
             </Button>
+            <Button fx:id="sortButton" layoutX="877.0" layoutY="16.0" mnemonicParsing="false" onAction="#changeOrder" prefHeight="54.0" prefWidth="169.0" text="Date ↑">
+               <font>
+                  <Font name="PT Serif" size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>

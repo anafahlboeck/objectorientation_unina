@@ -34,8 +34,11 @@ public class MainController implements Initializable {
     private Button newNoteButton;
     @FXML
     private ListView<Note> listView;
+    @FXML
+    private Button sortButton;
 
     private AuthenticationService authService = new AuthenticationService();
+    private boolean sortedAscending = true;
 
     private User currentUser = authService.getCurrentUser();
 
@@ -47,6 +50,19 @@ public class MainController implements Initializable {
 
     public void addNewNote(ActionEvent event) throws IOException {
         addNote();
+    }
+
+    public void changeOrder(ActionEvent event) throws IOException {
+        if(sortedAscending)
+        {
+            sortButton.setText("Date ↓");
+            sortedAscending = false;
+        }
+        else
+        {
+            sortButton.setText("Date ↑");
+            sortedAscending = true;
+        }
     }
 
     private void logout() throws IOException {
