@@ -28,10 +28,6 @@ public class ReadNoteController implements Initializable {
     private Label dateLabel;
     @FXML
     private Label textLabel;
-    @FXML
-    private Button deleteButton;
-    @FXML
-    private Button closeButton;
 
     private Note selectedNote;
     private NotesDAO notes = new NotesDAO();

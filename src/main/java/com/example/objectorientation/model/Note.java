@@ -6,6 +6,6 @@ public record Note(int noteId, int userId, LocalDate date, String header, String
 
     @Override
     public String toString() {
-        return header + ",  Date: " + date;
+        return date + " " + header;
     }
 }

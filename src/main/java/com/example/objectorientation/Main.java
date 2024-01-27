@@ -21,7 +21,7 @@ public class Main extends Application {
         stage.setResizable(false);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("loginPage.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 1512, 800);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Scrivimi!");
         stage.setScene(scene);
         stage.setMaximized(true);
