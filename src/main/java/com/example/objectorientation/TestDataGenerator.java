@@ -56,14 +56,41 @@ public class TestDataGenerator {
                 for (int i = 0; i < 7; i++) {
                     preparedStatement.setInt(1, userId);
                     preparedStatement.setDate(2, java.sql.Date.valueOf(LocalDate.now().plusDays(i)));
-                    preparedStatement.setString(3, "Note " + (i + 1) + " Header");
-                    preparedStatement.setString(4, "Note " + (i + 1) + " Text");
+                    preparedStatement.setString(3, generateNoteHeader(i));
+                    preparedStatement.setString(4, generateNoteText(i));
 
                     preparedStatement.executeUpdate();
                 }
             }
         }
     }
+
+    private static String generateNoteHeader(int index) {
+        return switch (index) {
+            case 0 -> "Funny Note";
+            case 1 -> "Shopping Reminder";
+            case 2 -> "ToDo List";
+            case 3 -> "Random Thought";
+            case 4 -> "Grocery List";
+            case 5 -> "Joke of the Day";
+            case 6 -> "Important Task";
+            default -> "Default Header";
+        };
+    }
+
+    private static String generateNoteText(int index) {
+        return switch (index) {
+            case 0 -> "Why did the chicken join a band? Because it had the drumsticks!";
+            case 1 -> "Don't forget to buy milk, eggs, and bread on your way home.";
+            case 2 -> "ToDo List:\n1. Finish work project\n2. Call mom\n3. Exercise for 30 minutes";
+            case 3 -> "I just realized that 'listen' and 'silent' have the same letters!";
+            case 4 -> "Grocery List:\n- Apples\n- Chicken\n- Pasta\n- Spinach";
+            case 5 -> "Why don't scientists trust atoms? Because they make up everything!";
+            case 6 -> "Important Task: Complete the report for the meeting tomorrow.";
+            default -> "Default Text";
+        };
+    }
+
 
     private static boolean userHasNotes(Connection connection, int userId) throws SQLException {
         String countNotesQuery = "SELECT COUNT(*) AS note_count FROM notes WHERE user_id = ?";
