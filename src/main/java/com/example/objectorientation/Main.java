@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
 
     private static Stage stg;
     @Override
@@ -17,7 +17,7 @@ public class HelloApplication extends Application {
         stg = stage;
 
         stage.setResizable(false);
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("loginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("loginPage.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1512, 800);
         stage.setTitle("Scrivimi!");
