@@ -19,7 +19,7 @@
                <font>
                   <Font name="PT Serif" size="30.0" />
                </font></TextField>
-            <TextArea fx:id="noteTextArea" layoutX="37.0" layoutY="92.0" prefHeight="200.0" prefWidth="514.0" promptText="Enter your note" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="200.0">
+            <TextArea fx:id="noteTextArea" layoutX="37.0" layoutY="92.0" prefHeight="200.0" prefWidth="514.0" promptText="Enter your note" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="200.0">
                <font>
                   <Font name="PT Serif" size="18.0" />
                </font></TextArea>
