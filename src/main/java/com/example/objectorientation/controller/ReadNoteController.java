@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
@@ -50,9 +51,9 @@ public class ReadNoteController implements Initializable {
 
     public void initData(Note selectedNote) {
         this.selectedNote = selectedNote;
-        headerLabel.setText("Header: " + selectedNote.header());
-        textLabel.setText("Text: " + selectedNote.text());
-        dateLabel.setText("Date: " + selectedNote.date());
+        headerLabel.setText(selectedNote.header());
+        textLabel.setText(selectedNote.text());
+        dateLabel.setText(selectedNote.date().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
 }

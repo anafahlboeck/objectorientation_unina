@@ -11,54 +11,57 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.LogInController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1512.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.LogInController">
     <left>
-        <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="800.0" prefWidth="756.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="30.0" layoutY="71.0" prefHeight="28.0" prefWidth="254.0" text="Scrivimi - Write me down" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="100.0">
+                <Label layoutX="29.0" layoutY="205.0" prefHeight="29.0" prefWidth="415.0" text="Scrivimi - Write me down" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="210.0">
                     <font>
-                        <Font name="PT Serif Bold Italic" size="21.0" />
+                        <Font name="PT Serif Bold Italic" size="35.0" />
                     </font>
                 </Label>
-                <Label layoutX="30.0" layoutY="121.0" prefHeight="17.0" prefWidth="245.0" text="Enter your credentials to acces your account" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                <Label layoutX="175.0" layoutY="329.0" prefHeight="26.0" prefWidth="401.0" text="Enter your credentials to access your account" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="260.0">
                     <font>
-                        <Font name="PT Serif" size="12.0" />
+                        <Font name="PT Serif" size="20.0" />
                     </font>
                 </Label>
-                <Label layoutX="30.0" layoutY="162.0" prefHeight="25.0" prefWidth="151.0" text="Email Adress" AnchorPane.leftAnchor="30.0">
+                <Label layoutX="207.0" layoutY="344.0" prefHeight="25.0" prefWidth="151.0" text="Email Adress" AnchorPane.bottomAnchor="440.0" AnchorPane.leftAnchor="175.0">
                     <font>
-                        <Font name="PT Serif Bold" size="15.0" />
+                        <Font name="PT Serif Bold" size="22.0" />
                     </font>
                 </Label>
-                <TextField fx:id="usernameField" layoutX="30.0" layoutY="187.0" prefHeight="26.0" prefWidth="240.0" promptText="email" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                <TextField fx:id="usernameField" layoutX="161.0" layoutY="381.0" prefHeight="45.0" prefWidth="240.0" promptText="email" AnchorPane.bottomAnchor="390.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0">
                     <font>
-                        <Font name="PT Serif Caption" size="13.0" />
+                        <Font name="PT Serif Caption" size="20.0" />
                     </font></TextField>
-                <PasswordField fx:id="passwordField" layoutX="30.0" layoutY="242.0" promptText="password" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                <PasswordField fx:id="passwordField" layoutX="180.0" layoutY="478.0" prefHeight="45.0" prefWidth="406.0" promptText="password" AnchorPane.bottomAnchor="290.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0">
                     <font>
-                        <Font name="PT Serif" size="13.0" />
+                        <Font name="PT Serif" size="20.0" />
                     </font></PasswordField>
-                <Label layoutX="30.0" layoutY="221.0" text="Password" AnchorPane.leftAnchor="30.0">
+                <Label layoutX="211.0" layoutY="441.0" text="Password" AnchorPane.bottomAnchor="345.0" AnchorPane.leftAnchor="175.0">
                     <font>
-                        <Font name="PT Serif Bold" size="15.0" />
+                        <Font name="PT Serif Bold" size="22.0" />
                     </font>
                 </Label>
-                <Button fx:id="loginButton" layoutX="30.0" layoutY="262.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="26.0" prefWidth="157.0" style="-fx-background-color: green;" text="Log in" textFill="#fffefe" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                <Button fx:id="loginButton" layoutX="30.0" layoutY="262.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="45.0" prefWidth="157.0" style="-fx-background-color: green;" text="Log in" textFill="#fffefe" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0">
                     <font>
-                        <Font name="PT Serif" size="13.0" />
+                        <Font name="PT Serif" size="22.0" />
                     </font></Button>
-                <Label fx:id="errorLabel" layoutX="30.0" layoutY="145.0" prefHeight="17.0" prefWidth="159.0" textFill="#ee0404" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+                <Label fx:id="errorLabel" layoutX="85.0" layoutY="341.0" prefHeight="17.0" prefWidth="159.0" textFill="#ee0404" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="300.0">
+               <font>
+                  <Font name="PT Serif" size="20.0" />
+               </font></Label>
             </children></AnchorPane>
     </left>
     <right>
-        <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="800.0" prefWidth="756.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="800.0" fitWidth="756.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <image>
                         <Image url="@../../../images/AdobeStock_176381909.jpeg" />
                     </image>
                     <viewport>
-                        <Rectangle2D height="4000.0" minX="2000.0" width="3000.0" />
+                        <Rectangle2D height="3850.0" minX="1700.0" minY="400.0" width="3638.25" />
                     </viewport>
                 </ImageView>
             </children></AnchorPane>

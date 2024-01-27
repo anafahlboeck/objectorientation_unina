@@ -31,13 +31,14 @@ public class MainController implements Initializable {
     @FXML
     private Button logoutButton;
     @FXML
-    private Button openButton;
-    @FXML
     private Button newNoteButton;
     @FXML
     private ListView<Note> listView;
+    @FXML
+    private Button sortButton;
 
     private AuthenticationService authService = new AuthenticationService();
+    private boolean sortedAscending = true;
 
     private User currentUser = authService.getCurrentUser();
 
@@ -46,12 +47,22 @@ public class MainController implements Initializable {
         logout();
     }
 
-    public void openNote(ActionEvent event) throws IOException {
-        openSelectedNote();
-    }
 
     public void addNewNote(ActionEvent event) throws IOException {
         addNote();
+    }
+
+    public void changeOrder(ActionEvent event) throws IOException {
+        if(sortedAscending)
+        {
+            sortButton.setText("Date ↓");
+            sortedAscending = false;
+        }
+        else
+        {
+            sortButton.setText("Date ↑");
+            sortedAscending = true;
+        }
     }
 
     private void logout() throws IOException {
@@ -59,10 +70,6 @@ public class MainController implements Initializable {
         a.changeScene("loginPage.fxml");
     }
 
-    private void openSelectedNote() throws IOException {
-        //retrieves selected message and opens readNotePage
-        a.changeScene("readNotePage.fxml");
-    }
 
     private void addNote() throws IOException {
         a.changeScene("newNotePage.fxml");

@@ -7,27 +7,34 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1512.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.MainController">
    <top>
-      <AnchorPane prefHeight="55.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="122.0" prefWidth="1512.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="10.0" text="Welcome Back!">
+            <Label layoutX="253.0" layoutY="48.0" text="Welcome Back!" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="253.0" AnchorPane.topAnchor="45.0">
                <font>
-                  <Font name="PT Serif Caption" size="30.0" />
+                  <Font name="PT Serif Caption" size="50.0" />
                </font>
             </Label>
-            <Button fx:id="logoutButton" layoutX="532.0" layoutY="15.0" mnemonicParsing="false" onAction="#userLogOut" style="-fx-background-color: red;" text="Log out" textFill="WHITE" AnchorPane.rightAnchor="9.5" />
+            <Button fx:id="logoutButton" layoutX="1332.0" layoutY="51.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="50.0" prefWidth="132.0" style="-fx-background-color: red;" text="Log out" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font name="PT Serif" size="20.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="listView" editable="true" layoutY="48.0" prefHeight="250.0" prefWidth="600.0" />
-            <Button fx:id="openButton" layoutX="532.0" layoutY="305.0" mnemonicParsing="false" onAction="#openNote" text="Open" />
-            <Button fx:id="newNoteButton" layoutX="478.0" layoutY="14.0" mnemonicParsing="false" onAction="#addNewNote" style="-fx-background-color: green;" text="+ Add new Note" textFill="#f8f7f7" AnchorPane.rightAnchor="9.5">
+            <ListView fx:id="listView" editable="true" fixedCellSize="80.0" layoutX="232.0" layoutY="104.0" prefHeight="593.0" prefWidth="996.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="90.0" />
+            <Button fx:id="newNoteButton" layoutX="1067.0" layoutY="16.0" mnemonicParsing="false" onAction="#addNewNote" prefHeight="54.0" prefWidth="169.0" style="-fx-background-color: green;" text="+ Add new Note" textFill="#f8f7f7" AnchorPane.rightAnchor="250.0">
                <font>
-                  <Font name="PT Serif" size="13.0" />
+                  <Font name="PT Serif" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="sortButton" layoutX="877.0" layoutY="16.0" mnemonicParsing="false" onAction="#changeOrder" prefHeight="54.0" prefWidth="169.0" text="Date ↑">
+               <font>
+                  <Font name="PT Serif" size="20.0" />
                </font>
             </Button>
          </children>
