@@ -1,6 +1,6 @@
 package com.example.objectorientation.controller;
 
-import com.example.objectorientation.HelloApplication;
+import com.example.objectorientation.Main;
 import com.example.objectorientation.model.User;
 import com.example.objectorientation.service.AuthenticationService;
 import com.example.objectorientation.service.NoteManager;
@@ -25,7 +25,7 @@ public class NewNoteController implements Initializable {
 
     }
 
-    HelloApplication a = new HelloApplication();
+    Main a = new Main();
     @FXML
     private Button cancelButton;
     @FXML

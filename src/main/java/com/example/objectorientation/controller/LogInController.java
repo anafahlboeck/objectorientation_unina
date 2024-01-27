@@ -1,6 +1,6 @@
 package com.example.objectorientation.controller;
 
-import com.example.objectorientation.HelloApplication;
+import com.example.objectorientation.Main;
 import com.example.objectorientation.PathHandler;
 import com.example.objectorientation.service.AuthenticationService;
 import javafx.fxml.FXML;
@@ -68,7 +68,7 @@ public class LogInController implements Initializable{
     }
 
     private void checkLogin() throws IOException {
-        HelloApplication a = new HelloApplication();
+        Main a = new Main();
         String email = usernameField.getText();
         String pw = passwordField.getText();
         if(email.isEmpty() && pw.isEmpty()) {

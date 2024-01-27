@@ -1,6 +1,6 @@
 package com.example.objectorientation.controller;
 
-import com.example.objectorientation.HelloApplication;
+import com.example.objectorientation.Main;
 import com.example.objectorientation.dao.NotesDAO;
 import com.example.objectorientation.model.Note;
 import javafx.event.ActionEvent;
@@ -21,7 +21,7 @@ public class ReadNoteController implements Initializable {
 
     }
 
-    HelloApplication a = new HelloApplication();
+    Main a = new Main();
     @FXML
     private Label headerLabel;
     @FXML

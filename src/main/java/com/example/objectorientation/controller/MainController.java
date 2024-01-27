@@ -1,6 +1,6 @@
 package com.example.objectorientation.controller;
 
-import com.example.objectorientation.HelloApplication;
+import com.example.objectorientation.Main;
 import com.example.objectorientation.dao.NotesDAO;
 import com.example.objectorientation.model.Note;
 import com.example.objectorientation.model.User;
@@ -27,7 +27,7 @@ public class MainController implements Initializable {
     public MainController() {
 
     }
-    HelloApplication a = new HelloApplication();
+    Main a = new Main();
     @FXML
     private Button logoutButton;
     @FXML
@@ -57,11 +57,14 @@ public class MainController implements Initializable {
         {
             sortButton.setText("Date ↓");
             sortedAscending = false;
+            getNotes();
+
         }
         else
         {
             sortButton.setText("Date ↑");
             sortedAscending = true;
+            getNotes();
         }
     }
 
@@ -77,20 +80,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        listView.getItems().clear();
-        ArrayList<Note> notesList = new NotesDAO().getByUserId(currentUser, true);
-
-        listView.getItems().addAll(notesList);
-
-        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                try {
-                    openSelectedNotePage(newValue);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        getNotes();
     }
 
     private void openSelectedNotePage(Note selectedNote) throws IOException {
@@ -114,4 +104,22 @@ public class MainController implements Initializable {
             System.err.println("FXML file not found.");
         }
     }
+
+    public void getNotes() {
+        listView.getItems().clear();
+        ArrayList<Note> notesList = new NotesDAO().getByUserId(currentUser, sortedAscending);
+
+        listView.getItems().addAll(notesList);
+
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                try {
+                    openSelectedNotePage(newValue);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 }
