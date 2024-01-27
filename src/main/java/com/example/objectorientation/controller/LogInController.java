@@ -10,7 +10,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 
 
 import java.io.IOException;
@@ -45,9 +46,29 @@ public class LogInController implements Initializable{
 
     private AuthenticationService authService = new AuthenticationService();
 
+    @FXML
+    private AnchorPane leftAnchorPane;
+
+    @FXML
+    private AnchorPane rightAnchorPane;
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
+        if (leftAnchorPane == null || rightAnchorPane == null) {
+            throw new IllegalStateException("AnchorPanes are not properly injected.");
+        }
+
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+
+        leftAnchorPane.setPrefWidth(screenWidth / 2);
+        leftAnchorPane.setPrefHeight(screenHeight);
+
+        rightAnchorPane.setPrefWidth(screenWidth / 2);
+        rightAnchorPane.setPrefHeight(screenHeight);
+
         //init DB
         try (Connection connection = DriverManager.getConnection(jdbcURL, user, password)) {
             HelloController.class.getClassLoader().getResourceAsStream("schema.sql");
