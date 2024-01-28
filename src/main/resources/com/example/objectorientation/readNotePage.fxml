@@ -6,41 +6,47 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1512.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.ReadNoteController">
-   <top>
-      <AnchorPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </top>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.ReadNoteController">
    <center>
-      <AnchorPane prefHeight="553.0" prefWidth="1512.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="centerAnchorPane" prefHeight="497.0" prefWidth="1512.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="320.0" layoutY="228.0" prefHeight="216.0" prefWidth="356.0" style="-fx-border-color: black; -fx-border-radius: 15px; -fx-label-padding: 20;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a sem ante. Suspendisse magna purus, luctus non nibh ut, tincidunt mattis lacus. Duis et mauris eget neque porttitor euismod. Ut aliquet porttitor quam, vitae malesuada elit facilisis at. Mauris a laoreet urna, vitae finibus diam. Morbi eleifend urna nec nisi sagittis, at luctus eros ultricies. Sed semper dignissim accumsan. Integer vitae blandit purus. In molestie nunc vitae iaculis finibus. Vestibulum eget orci tincidunt, tempus arcu eu, semper leo. In egestas enim nec risus auctor, eget ultrices nisi sagittis. Ut sed velit et ante aliquet mollis." textAlignment="JUSTIFY" wrapText="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="200.0">
+            <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="290.0" layoutY="53.0" prefHeight="236.0" prefWidth="3764.0" style="-fx-border-color: black; -fx-border-radius: 15px; -fx-label-padding: 20;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a sem ante. Suspendisse magna purus, luctus non nibh ut, tincidunt mattis lacus. Duis et mauris eget neque porttitor euismod. Ut aliquet porttitor quam, vitae malesuada elit facilisis at. Mauris a laoreet urna, vitae finibus diam. Morbi eleifend urna nec nisi sagittis, at luctus eros ultricies. Sed semper dignissim accumsan. Integer vitae blandit purus. In molestie nunc vitae iaculis finibus. Vestibulum eget orci tincidunt, tempus arcu eu, semper leo. In egestas enim nec risus auctor, eget ultrices nisi sagittis. Ut sed velit et ante aliquet mollis." textAlignment="JUSTIFY" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="15.0" />
                </font></Label>
-            <Button fx:id="closeButton" layoutX="1068.0" layoutY="489.0" mnemonicParsing="false" onAction="#closeNote" prefHeight="50.0" prefWidth="130.0" text="Close" AnchorPane.leftAnchor="1068.0" AnchorPane.rightAnchor="296.0">
-               <font>
-                  <Font name="PT Serif Caption" size="20.0" />
-               </font>
-            </Button>
-            <Button fx:id="deleteButton" layoutX="1069.0" layoutY="126.0" mnemonicParsing="false" onAction="#deleteNote" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="1069.0" AnchorPane.rightAnchor="300.0">
-               <font>
-                  <Font name="PT Serif Caption" size="20.0" />
-               </font>
-            </Button>
-            <Label fx:id="headerLabel" layoutX="343.0" layoutY="114.0" prefHeight="67.0" prefWidth="466.0" text="Test" AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="600.0">
-               <font>
-                  <Font name="PT Serif Bold" size="50.0" />
-               </font>
-            </Label>
-            <Label fx:id="dateLabel" layoutX="802.0" layoutY="133.0" prefHeight="40.0" prefWidth="105.0" text="26.03.2002" AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="912.0">
-               <font>
-                  <Font name="PT Serif" size="20.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </center>
    <bottom>
-      <AnchorPane prefHeight="59.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="lowerAnchorPane" prefHeight="290.0" prefWidth="1512.0" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <Button fx:id="closeButton" layoutX="1060.0" layoutY="-2.0" mnemonicParsing="false" onAction="#closeNote" prefHeight="50.0" prefWidth="130.0" text="Close" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="PT Serif Caption" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </bottom>
+   <top>
+      <AnchorPane fx:id="upperAnchorPane" prefHeight="287.0" prefWidth="1512.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="headerLabel" layoutX="96.0" layoutY="110.0" prefHeight="67.0" prefWidth="466.0" text="Test" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0">
+               <font>
+                  <Font name="PT Serif Bold" size="50.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="694.0" layoutY="133.0" prefHeight="40.0" prefWidth="105.0" text="26.03.2002" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="800.0">
+               <font>
+                  <Font name="PT Serif" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteButton" layoutX="1092.0" layoutY="125.0" mnemonicParsing="false" onAction="#deleteNote" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="300.0">
+               <font>
+                  <Font name="PT Serif Caption" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

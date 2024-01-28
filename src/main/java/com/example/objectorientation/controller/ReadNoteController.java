@@ -8,6 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +25,12 @@ public class ReadNoteController implements Initializable {
     }
 
     Main a = new Main();
+    @FXML
+    private AnchorPane upperAnchorPane;
+    @FXML
+    private AnchorPane centerAnchorPane;
+    @FXML
+    private AnchorPane lowerAnchorPane;
     @FXML
     private Label headerLabel;
     @FXML
@@ -39,10 +48,27 @@ public class ReadNoteController implements Initializable {
 
     public void closeNote(ActionEvent event) throws  IOException {
         a.changeScene("mainPage.fxml");
+
+
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
+        if (upperAnchorPane == null ||centerAnchorPane == null || lowerAnchorPane == null) {
+            throw new IllegalStateException("AnchorPanes are not properly injected.");
+        }
+
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+        upperAnchorPane.setPrefHeight(screenHeight/4);
+        upperAnchorPane.setPrefWidth(screenWidth);
+        centerAnchorPane.setPrefHeight(screenHeight/2);
+        centerAnchorPane.setPrefWidth(screenWidth);
+        lowerAnchorPane.setPrefHeight(screenHeight/4);
+        lowerAnchorPane.setPrefWidth(screenWidth);
+
+
     }
 
     public void initData(Note selectedNote) {
