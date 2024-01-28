@@ -11,55 +11,48 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.objectorientation.controller.LogInController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.objectorientation.controller.LogInController">
 
     <left>
         <AnchorPane fx:id="leftAnchorPane" BorderPane.alignment="CENTER">
             <Label layoutX="175.0" layoutY="205.0" text="Scrivimi - Write me down">
                 <font>
-                    <Font name="PT Serif Bold Italic" size="35.0"/>
+                    <Font name="PT Serif Bold Italic" size="35.0" />
                 </font>
             </Label>
-            <Label layoutX="175.0" layoutY="250.0" prefHeight="26.0" prefWidth="401.0"
-                   text="Enter your credentials to access your account" >
+            <Label layoutX="175.0" layoutY="250.0" text="Enter your credentials to access your account">
                 <font>
-                    <Font name="PT Serif" size="20.0"/>
+                    <Font name="PT Serif" size="20.0" />
                 </font>
             </Label>
             <Label layoutX="175.0" layoutY="344.0" prefHeight="25.0" prefWidth="151.0" text="Email Adress">
                 <font>
-                    <Font name="PT Serif Bold" size="22.0"/>
+                    <Font name="PT Serif Bold" size="22.0" />
                 </font>
             </Label>
-            <TextField fx:id="usernameField" layoutX="175.0" layoutY="381.0" prefHeight="45.0" prefWidth="240.0"
-                       promptText="email" >
+            <TextField fx:id="usernameField" layoutX="175.0" layoutY="381.0" prefHeight="45.0" prefWidth="240.0" promptText="email">
                 <font>
-                    <Font name="PT Serif Caption" size="20.0"/>
+                    <Font name="PT Serif Caption" size="20.0" />
                 </font>
             </TextField>
-            <PasswordField fx:id="passwordField" layoutX="175.0" layoutY="478.0" prefHeight="45.0" prefWidth="240.0"
-                           promptText="password">
+            <PasswordField fx:id="passwordField" layoutX="175.0" layoutY="478.0" prefHeight="45.0" prefWidth="240.0" promptText="password">
                 <font>
-                    <Font name="PT Serif" size="20.0"/>
+                    <Font name="PT Serif" size="20.0" />
                 </font>
             </PasswordField>
             <Label layoutX="175.0" layoutY="441.0" text="Password">
                 <font>
-                    <Font name="PT Serif Bold" size="22.0"/>
+                    <Font name="PT Serif Bold" size="22.0" />
                 </font>
             </Label>
-            <Button fx:id="loginButton" layoutX="175.0" layoutY="562.0" mnemonicParsing="false" onAction="#userLogIn"
-                    prefHeight="45.0" prefWidth="157.0" style="-fx-background-color: green;" text="Log in"
-                    textFill="#fffefe">
+            <Button fx:id="loginButton" layoutX="175.0" layoutY="562.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="45.0" prefWidth="157.0" style="-fx-background-color: green;" text="Log in" textFill="#fffefe">
                 <font>
-                    <Font name="PT Serif" size="22.0"/>
+                    <Font name="PT Serif" size="22.0" />
                 </font>
             </Button>
-            <Label fx:id="errorLabel" layoutX="175.0" layoutY="521.0"
-                   textFill="#ee0404">
+            <Label fx:id="errorLabel" layoutX="175.0" layoutY="521.0" textFill="#ee0404">
                 <font>
-                    <Font name="PT Serif" size="20.0"/>
+                    <Font name="PT Serif" size="20.0" />
                 </font>
             </Label>
         </AnchorPane>
@@ -70,7 +63,7 @@
                 <viewport>
                     <Rectangle2D />
                 </viewport>
-                <Image url="@../../../images/AdobeStock_176381909.jpeg"/>
+                <Image url="@../../../images/AdobeStock_176381909.jpeg" />
             </ImageView>
         </AnchorPane>
     </right>
