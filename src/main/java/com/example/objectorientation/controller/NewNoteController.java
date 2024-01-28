@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +28,13 @@ public class NewNoteController implements Initializable {
     }
 
     Main a = new Main();
+
+    @FXML
+    private AnchorPane upperAnchorPane;
+    @FXML
+    private AnchorPane centerAnchorPane;
+    @FXML
+    private AnchorPane lowerAnchorPane;
     @FXML
     private Button cancelButton;
     @FXML
@@ -65,6 +74,20 @@ public class NewNoteController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+
+        if (upperAnchorPane == null || centerAnchorPane == null || lowerAnchorPane == null) {
+            throw new IllegalStateException("AnchorPanes are not properly injected.");
+        }
+
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+        upperAnchorPane.setPrefHeight(screenHeight/4);
+        upperAnchorPane.setPrefWidth(screenWidth);
+        centerAnchorPane.setPrefHeight(screenHeight/2);
+        centerAnchorPane.setPrefWidth(screenWidth);
+        lowerAnchorPane.setPrefHeight(screenHeight/4);
+        lowerAnchorPane.setPrefWidth(screenWidth);
 
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         dateLabel.setText(date);
