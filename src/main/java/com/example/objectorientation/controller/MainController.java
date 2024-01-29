@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -93,11 +94,19 @@ public class MainController implements Initializable {
             loader.setLocation(url);
             Parent root = loader.load();
 
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getVisualBounds().getWidth();
+            double screenHeight = screen.getVisualBounds().getHeight();
+
             ReadNoteController readNoteController = loader.getController();
             readNoteController.initData(selectedNote);
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) listView.getScene().getWindow();
+            stage.setHeight(screenHeight);
+            stage.setWidth(screenWidth);
+
+
             stage.setScene(scene);
             stage.show();
         } else {

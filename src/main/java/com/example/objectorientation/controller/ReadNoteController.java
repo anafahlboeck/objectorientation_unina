@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 
 
@@ -25,6 +26,8 @@ public class ReadNoteController implements Initializable {
     }
 
     Main a = new Main();
+    @FXML
+    private BorderPane borderPane;
     @FXML
     private AnchorPane upperAnchorPane;
     @FXML
@@ -61,6 +64,10 @@ public class ReadNoteController implements Initializable {
         Screen screen = Screen.getPrimary();
         double screenWidth = screen.getVisualBounds().getWidth();
         double screenHeight = screen.getVisualBounds().getHeight();
+        borderPane.setPrefHeight(screenHeight);
+        borderPane.setPrefWidth(screenWidth);
+        borderPane.setMaxHeight(screenHeight);
+        borderPane.setMaxWidth(screenWidth);
         upperAnchorPane.setPrefHeight(screenHeight/4);
         upperAnchorPane.setPrefWidth(screenWidth);
         centerAnchorPane.setPrefHeight(screenHeight/2);
