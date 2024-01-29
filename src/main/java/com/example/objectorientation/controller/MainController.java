@@ -86,32 +86,23 @@ public class MainController implements Initializable {
 
     private void openSelectedNotePage(Note selectedNote) throws IOException {
 
-        File file = new File("src/main/resources/com/example/objectorientation/readNotePage.fxml");
-        URL url = file.toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("readNotePage.fxml"));
+            Scene scene = new Scene(loader.load());
 
-        if (url != null) {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(url);
-            Parent root = loader.load();
-
-            Screen screen = Screen.getPrimary();
+            /*Screen screen = Screen.getPrimary();
             double screenWidth = screen.getVisualBounds().getWidth();
-            double screenHeight = screen.getVisualBounds().getHeight();
+            double screenHeight = screen.getVisualBounds().getHeight();*/
 
             ReadNoteController readNoteController = loader.getController();
             readNoteController.initData(selectedNote);
 
-            Scene scene = new Scene(root);
             Stage stage = (Stage) listView.getScene().getWindow();
-            stage.setHeight(screenHeight);
-            stage.setWidth(screenWidth);
-
+            Screen screen = Screen.getPrimary();
+            /*stage.setHeight(screenHeight);
+            stage.setWidth(screenWidth);*/
 
             stage.setScene(scene);
             stage.show();
-        } else {
-            System.err.println("FXML file not found.");
-        }
     }
 
     public void getNotes() {
