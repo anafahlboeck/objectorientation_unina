@@ -1,10 +1,12 @@
 package com.example.objectorientation.controller;
 
+import com.example.objectorientation.ApplicationState;
 import com.example.objectorientation.Main;
 import com.example.objectorientation.dao.NotesDAO;
 import com.example.objectorientation.model.Note;
 import com.example.objectorientation.model.User;
 import com.example.objectorientation.service.AuthenticationService;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -38,6 +41,7 @@ public class MainController implements Initializable {
     private Button sortButton;
 
     private AuthenticationService authService = new AuthenticationService();
+    final private ApplicationState applicationState = ApplicationState.getInstance();
     private boolean sortedAscending = true;
 
     private User currentUser = authService.getCurrentUser();
@@ -83,28 +87,6 @@ public class MainController implements Initializable {
         getNotes();
     }
 
-    private void openSelectedNotePage(Note selectedNote) throws IOException {
-
-        File file = new File("src/main/resources/com/example/objectorientation/readNotePage.fxml");
-        URL url = file.toURI().toURL();
-
-        if (url != null) {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(url);
-            Parent root = loader.load();
-
-            ReadNoteController readNoteController = loader.getController();
-            readNoteController.initData(selectedNote);
-
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) listView.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } else {
-            System.err.println("FXML file not found.");
-        }
-    }
-
     public void getNotes() {
         listView.getItems().clear();
         ArrayList<Note> notesList = new NotesDAO().getByUserId(currentUser, sortedAscending);
@@ -114,7 +96,8 @@ public class MainController implements Initializable {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 try {
-                    openSelectedNotePage(newValue);
+                    applicationState.setActiveNote(newValue);
+                    a.changeScene("readNotePage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
