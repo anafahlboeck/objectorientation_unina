@@ -1,5 +1,6 @@
 package com.example.objectorientation;
 
+import com.example.objectorientation.model.Admin;
 import com.example.objectorientation.model.User;
 import com.example.objectorientation.security.PasswordHasher;
 
@@ -16,14 +17,15 @@ public class TestDataGenerator {
 
     public static void insertTestDataIfNotExists() {
         User[] testUsers = {
-                new User(null, "admin", "admin"),
+                new Admin(null, "admin", "admin",true),
+                new User(null, "user@gmail.com", "password"),
                 new User(null, "user1@gmail.com", "password1"),
                 new User(null, "user2@hotmail.com", "password2")
         };
 
         try (Connection connection = DriverManager.getConnection(state.getJdbcUrl(), state.getDBUser(), state.getDBPassword())) {
-            for (User testData : testUsers) {
-                int userId = insertUserIfNotExists(connection, testData.email(), testData.password());
+                for (User testData : testUsers) {
+                int userId = insertUserIfNotExists(connection, testData.email(), testData.password(), testData instanceof Admin);
 
                 // Überprüfen, ob Benutzer existiert
                 if (userId != -1) {
@@ -35,13 +37,14 @@ public class TestDataGenerator {
         }
     }
 
-    private static int insertUserIfNotExists(Connection connection, String email, String password) throws SQLException {
+    private static int insertUserIfNotExists(Connection connection, String email, String password, Boolean isAdmin) throws SQLException {
         String hashedPassword = PasswordHasher.hashPassword(password);
 
-        String userInsertQuery = "INSERT INTO users(email, password) VALUES (?, ?) ON CONFLICT(email) DO NOTHING RETURNING user_id";
+        String userInsertQuery = "INSERT INTO users(email, password, is_admin) VALUES (?, ?, ?) ON CONFLICT(email) DO NOTHING RETURNING user_id";
         try (PreparedStatement preparedStatement = connection.prepareStatement(userInsertQuery)) {
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, hashedPassword);
+            preparedStatement.setBoolean(3, isAdmin);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 return resultSet.next() ? resultSet.getInt("user_id") : -1;
@@ -75,7 +78,5 @@ public class TestDataGenerator {
         }
     }
 
-    public static void main(String[] args) {
-        insertTestDataIfNotExists();
-    }
+    public static void main(String[] args) {}
 }

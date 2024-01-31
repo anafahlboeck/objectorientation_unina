@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.example.objectorientation.TestDataGenerator.insertTestDataIfNotExists;
+
 public class Main extends Application {
 
     private static Stage stg;
@@ -35,5 +37,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
+        insertTestDataIfNotExists();
     }
 }
