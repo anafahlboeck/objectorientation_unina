@@ -19,13 +19,21 @@ view, sort notes by date, and delete them.</p>
 <p>Start the PostgreSQL database with Docker Compose:</p>
 
 ``
-docker compose up
+$ docker compose up
 ``
 
 
 
 <p>You can use the following command for a clean build and run:</p>
+<p>Windows:</p>
 
 ``
-.\mvnw.cmd clean javafx:run
+$ .\mvnw.cmd clean javafx:run
 ``
+
+<p>MacOS:</p>
+
+``
+$ mvn clean javafx:run
+``
+
