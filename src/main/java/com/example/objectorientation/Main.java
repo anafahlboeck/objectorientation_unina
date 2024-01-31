@@ -1,7 +1,5 @@
 package com.example.objectorientation;
 
-import com.example.objectorientation.controller.ReadNoteController;
-import com.example.objectorientation.model.Note;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,26 +41,6 @@ public class Main extends Application {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
 
-    }
-
-    public void openSelectedNotePage(Note selectedNote) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("readNotePage.fxml"));
-        Scene scene = new Scene(loader.load());
-
-            /*Screen screen = Screen.getPrimary();
-            double screenWidth = screen.getVisualBounds().getWidth();
-            double screenHeight = screen.getVisualBounds().getHeight();*/
-
-        ReadNoteController readNoteController = loader.getController();
-        readNoteController.initData(selectedNote);
-
-        Screen screen = Screen.getPrimary();
-            /*stage.setHeight(screenHeight);
-            stage.setWidth(screenWidth);*/
-
-        stg.setScene(scene);
-        stg.show();
     }
 
     public static void main(String[] args) {

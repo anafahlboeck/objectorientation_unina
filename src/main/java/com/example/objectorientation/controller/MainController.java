@@ -1,10 +1,12 @@
 package com.example.objectorientation.controller;
 
+import com.example.objectorientation.ApplicationState;
 import com.example.objectorientation.Main;
 import com.example.objectorientation.dao.NotesDAO;
 import com.example.objectorientation.model.Note;
 import com.example.objectorientation.model.User;
 import com.example.objectorientation.service.AuthenticationService;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +41,7 @@ public class MainController implements Initializable {
     private Button sortButton;
 
     private AuthenticationService authService = new AuthenticationService();
+    final private ApplicationState applicationState = ApplicationState.getInstance();
     private boolean sortedAscending = true;
 
     private User currentUser = authService.getCurrentUser();
@@ -93,7 +96,8 @@ public class MainController implements Initializable {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 try {
-                    a.openSelectedNotePage(newValue);
+                    applicationState.setActiveNote(newValue);
+                    a.changeScene("readNotePage.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

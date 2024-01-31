@@ -1,5 +1,6 @@
 package com.example.objectorientation.controller;
 
+import com.example.objectorientation.ApplicationState;
 import com.example.objectorientation.Main;
 import com.example.objectorientation.dao.NotesDAO;
 import com.example.objectorientation.model.Note;
@@ -16,6 +17,7 @@ import javafx.stage.Screen;
 import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 
@@ -40,19 +42,20 @@ public class ReadNoteController implements Initializable {
     private Label dateLabel;
     @FXML
     private Label textLabel;
+    
+    final private ApplicationState applicationState = ApplicationState.getInstance();
 
-    private Note selectedNote;
     private NotesDAO notes = new NotesDAO();
 
     public void deleteNote(ActionEvent event) throws IOException {
-        notes.deleteNoteById(this.selectedNote.noteId());
+        notes.deleteNoteById(applicationState.getActiveNote().noteId());
+        applicationState.setActiveNote(null);
         a.changeScene("mainPage.fxml");
     }
 
     public void closeNote(ActionEvent event) throws  IOException {
+        applicationState.setActiveNote(null);
         a.changeScene("mainPage.fxml");
-
-
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
@@ -75,14 +78,10 @@ public class ReadNoteController implements Initializable {
         lowerAnchorPane.setPrefHeight(screenHeight/4);
         lowerAnchorPane.setPrefWidth(screenWidth);
 
+        textLabel.setText(applicationState.getActiveNote().text());
+        headerLabel.setText(applicationState.getActiveNote().header());
+        dateLabel.setText(applicationState.getActiveNote().date().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
-    }
-
-    public void initData(Note selectedNote) {
-        this.selectedNote = selectedNote;
-        headerLabel.setText(selectedNote.header());
-        textLabel.setText(selectedNote.text());
-        dateLabel.setText(selectedNote.date().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
 }
