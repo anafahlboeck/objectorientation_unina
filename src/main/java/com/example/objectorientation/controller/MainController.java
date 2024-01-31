@@ -84,27 +84,6 @@ public class MainController implements Initializable {
         getNotes();
     }
 
-    private void openSelectedNotePage(Note selectedNote) throws IOException {
-
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("readNotePage.fxml"));
-            Scene scene = new Scene(loader.load());
-
-            /*Screen screen = Screen.getPrimary();
-            double screenWidth = screen.getVisualBounds().getWidth();
-            double screenHeight = screen.getVisualBounds().getHeight();*/
-
-            ReadNoteController readNoteController = loader.getController();
-            readNoteController.initData(selectedNote);
-
-            Stage stage = (Stage) listView.getScene().getWindow();
-            Screen screen = Screen.getPrimary();
-            /*stage.setHeight(screenHeight);
-            stage.setWidth(screenWidth);*/
-
-            stage.setScene(scene);
-            stage.show();
-    }
-
     public void getNotes() {
         listView.getItems().clear();
         ArrayList<Note> notesList = new NotesDAO().getByUserId(currentUser, sortedAscending);
@@ -114,7 +93,7 @@ public class MainController implements Initializable {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 try {
-                    openSelectedNotePage(newValue);
+                    a.openSelectedNotePage(newValue);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
