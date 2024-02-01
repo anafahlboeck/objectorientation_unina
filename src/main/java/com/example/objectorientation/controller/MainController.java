@@ -6,19 +6,11 @@ import com.example.objectorientation.dao.NotesDAO;
 import com.example.objectorientation.model.Note;
 import com.example.objectorientation.model.User;
 import com.example.objectorientation.service.AuthenticationService;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,10 +23,6 @@ public class MainController implements Initializable {
 
     }
     Main a = new Main();
-    @FXML
-    private Button logoutButton;
-    @FXML
-    private Button newNoteButton;
     @FXML
     private ListView<Note> listView;
     @FXML

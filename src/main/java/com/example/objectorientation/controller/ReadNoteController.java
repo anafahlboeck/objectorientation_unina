@@ -3,21 +3,16 @@ package com.example.objectorientation.controller;
 import com.example.objectorientation.ApplicationState;
 import com.example.objectorientation.Main;
 import com.example.objectorientation.dao.NotesDAO;
-import com.example.objectorientation.model.Note;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 

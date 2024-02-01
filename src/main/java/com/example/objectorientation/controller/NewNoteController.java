@@ -7,7 +7,6 @@ import com.example.objectorientation.service.NoteManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -35,10 +34,6 @@ public class NewNoteController implements Initializable {
     private AnchorPane centerAnchorPane;
     @FXML
     private AnchorPane lowerAnchorPane;
-    @FXML
-    private Button cancelButton;
-    @FXML
-    private Button saveExitButton;
     @FXML
     private TextField headerTextField;
     @FXML
