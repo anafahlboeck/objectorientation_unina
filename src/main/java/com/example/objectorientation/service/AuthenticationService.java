@@ -52,7 +52,7 @@ public class AuthenticationService {
             if (hashPassword != null && hashPassword.equals(dbPassword)) {
                 return Optional.of(validUserFromDatabase);
             } else {
-                return Optional.empty(); // Passwörter stimmen nicht überein
+                return Optional.empty(); // passwords do not match
             }
         } catch (SQLException e) {
             throw new IllegalStateException(e);

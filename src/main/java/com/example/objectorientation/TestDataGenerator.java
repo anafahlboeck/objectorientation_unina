@@ -27,7 +27,6 @@ public class TestDataGenerator {
                 for (User testData : testUsers) {
                 int userId = insertUserIfNotExists(connection, testData.email(), testData.password(), testData instanceof Admin);
 
-                // Überprüfen, ob Benutzer existiert
                 if (userId != -1) {
                     insertNotesIfNotExists(connection, userId);
                 }
@@ -104,6 +103,4 @@ public class TestDataGenerator {
             }
         }
     }
-
-    public static void main(String[] args) {}
 }

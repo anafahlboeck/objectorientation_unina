@@ -4,7 +4,6 @@ import com.example.objectorientation.Main;
 import com.example.objectorientation.PathHandler;
 import com.example.objectorientation.service.AuthenticationService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -35,8 +34,6 @@ public class LogInController implements Initializable{
     private String password = "password";
     private String query = "";
 
-    @FXML
-    private Button loginButton;
     @FXML
     private Label errorLabel;
     @FXML
@@ -71,7 +68,7 @@ public class LogInController implements Initializable{
 
         //init DB
         try (Connection connection = DriverManager.getConnection(jdbcURL, user, password)) {
-            HelloController.class.getClassLoader().getResourceAsStream("schema.sql");
+            MainController.class.getClassLoader().getResourceAsStream("schema.sql");
             String filePath = PathHandler.relativePath("src main resources schema.sql");
             Path of = Path.of(filePath);
             query = Files.readString(of);
